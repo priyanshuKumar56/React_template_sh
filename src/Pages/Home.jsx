@@ -1,76 +1,23 @@
-import { BellRing, Check } from "lucide-react";
+import React from "react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
-
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-];
-
-export function CardDemo({ className, ...props }) {
+const WelcomePage = ({ name = "Developer", description, onGetStarted }) => {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
-      <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className=" flex items-center space-x-4 rounded-md border p-4">
-          <BellRing />
-          <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium leading-none">
-              Push Notifications
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Send notifications to device.
-            </p>
-          </div>
-          <Switch />
-        </div>
-        <div>
-          {notifications.map((notification, index) => (
-            <div
-              key={index}
-              className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-            >
-              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {notification.title}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {notification.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">
-          <Check /> Mark all as read
-        </Button>
-      </CardFooter>
-    </Card>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-white text-gray-800 px-4 text-center">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome, {name}!</h1>
+      <p className="text-lg md:text-xl max-w-xl mb-6">
+        {description ||
+          "This is a reusable welcome page for your React projects. Use it as a starting point or customize it as you grow."}
+      </p>
+      {onGetStarted && (
+        <button
+          onClick={onGetStarted}
+          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition"
+        >
+          Get Started
+        </button>
+      )}
+    </div>
   );
-}
+};
+
+export default WelcomePage;

@@ -2,14 +2,18 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { CardDemo } from "./Pages/Home";
+import WelcomePage from "./Pages/Home";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <CardDemo />
+      <WelcomePage
+        name="Priyanshu"
+        description="Welcome to my freelance project starter. Let's build something great!"
+        onGetStarted={() => alert("Let’s go!")}
+      />
     </>
   );
 }
